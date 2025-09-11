@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Week4Luxama</string>
+    <string name="primaryQuestion">Eske Xama se on bon moun?</string>
+    <string name="primaryanswer1">Non</string>
+    <string name="primaryanswer2">Wi</string>
+    <string name="primaryanswer3">Pa Telman</string>
+
+
+</resources>
