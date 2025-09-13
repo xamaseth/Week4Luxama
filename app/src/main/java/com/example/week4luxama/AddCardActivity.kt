@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -27,7 +28,9 @@ val questi= getIntent().getStringExtra("qtn")
         val answer1 = findViewById<EditText>(R.id.answer1)
         val answer2 = findViewById<EditText>(R.id.answer2)
         val answer3 = findViewById<EditText>(R.id.answer3)
-        inputQuestion.setText(questi)
+        val answerSelector = findViewById<Spinner>(R.id.answerSelector)
+
+//        inputQuestion.setText(questi)
         fun closeThis() {
             finish()
         }
@@ -41,11 +44,13 @@ val questi= getIntent().getStringExtra("qtn")
                 val errorFields = listOf(inputQuestion, answer1, answer2, answer3)
                 errorFields.forEach { it.hint = "Sa paka vid" } // "Cannot be empty"
             } else {
+                val optionChoice = answerSelector.selectedItem.toString()
                 val resultIntent = Intent()
                 resultIntent.putExtra("updatedQtn", inputQuestion.text.toString())
                 resultIntent.putExtra("answer1", answer1.text.toString())
                 resultIntent.putExtra("answer2", answer2.text.toString())
                 resultIntent.putExtra("answer3", answer3.text.toString())
+                resultIntent.putExtra("optioninput",optionChoice)
                 setResult(RESULT_OK, resultIntent)
                 finish()
             }

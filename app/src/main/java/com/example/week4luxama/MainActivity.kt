@@ -36,8 +36,7 @@ class MainActivity : AppCompatActivity() {
         val option3 = findViewById<TextView>(R.id.textView4)
 
         val allOptions = listOf(option1, option2, option3)
-        val correctAnswer = option3
-
+        var correctAnswer = option3
         // launcher to get result from AddCardActivity
         val launcher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
@@ -48,10 +47,21 @@ class MainActivity : AppCompatActivity() {
                 option1.text = data?.getStringExtra("answer1")
                 option2.text = data?.getStringExtra("answer2")
                 option3.text = data?.getStringExtra("answer3")
+                val okk = data?.getStringExtra("optioninput")
+
+                correctAnswer = when (okk) {
+                    "Answer 1" -> option1
+                    "Answer 2" -> option2
+                    "Answer 3" -> option3
+                    else -> null
+                }
             }
         }
 
-//Function pou mete visib envisib
+
+
+
+        //Function pou mete visib envisib
         fun toggleLayout() {
             if (layout1.isVisible) {
                 layout1.visibility = View.INVISIBLE
@@ -78,15 +88,21 @@ class MainActivity : AppCompatActivity() {
         option2.setOnClickListener { checkAnswer(correctAnswer, option2) }
         option3.setOnClickListener { checkAnswer(correctAnswer, option3) }
 
-        questionplace.setOnClickListener {
+        //pou Clear repons yo
+        fun netwaye(){
             allOptions.forEach {
                 it.setBackgroundResource(R.drawable.textde)
                 it.isClickable = true
             }
         }
 
+        questionplace.setOnClickListener {
+            netwaye()
+        }
+
         //Function pou al nan lot ecran
         fun openAddCard() {
+            netwaye()
             val intent = Intent(this, AddCardActivity::class.java).apply {
                 putExtra("qtn", questionplace.text)
                 putExtra("opt1", option1.text)
