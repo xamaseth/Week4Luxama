@@ -94,6 +94,7 @@ class MainActivity : AppCompatActivity() {
                 it.setBackgroundResource(R.drawable.textde)
                 it.isClickable = true
             }
+
         }
 
         questionplace.setOnClickListener {
@@ -103,6 +104,8 @@ class MainActivity : AppCompatActivity() {
         //Function pou al nan lot ecran
         fun openAddCard() {
             netwaye()
+            layout1.visibility = View.INVISIBLE
+            button1.setImageResource(R.drawable.myec_foreground)
             val intent = Intent(this, AddCardActivity::class.java).apply {
                 putExtra("qtn", questionplace.text)
                 putExtra("opt1", option1.text)
