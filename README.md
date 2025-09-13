@@ -48,4 +48,6 @@ An interactive Android quiz application built with **Kotlin**. This project demo
 5. **Save Changes** → Returns to main screen with updated question/answers.  
 
 ---
-
+Gif 
+---
+![Seth Luxama Week4](https://github.com/user-attachments/assets/6952d489-ee7e-4781-92fb-ff21e8fcdc13)
